@@ -11,6 +11,8 @@ public class main {
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(Color.WHITE);
+        mainPanel.setLayout(null);
 
         JLabel label = new JLabel("Usuario");
         mainPanel.add(label);
