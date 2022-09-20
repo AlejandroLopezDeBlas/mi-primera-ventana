@@ -1,3 +1,5 @@
+package org.iesfm.ventana;
+
 import javax.swing.*;
 
 public class MyTitledBorderWindow {
