@@ -11,16 +11,21 @@ public class MyBorderLayoutWindow {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainpanel = new JPanel();
+        mainpanel.setLayout(new BorderLayout(10, 10));
 
-        BorderLayout layoutNorth = new BorderLayout();
-        mainpanel.setLayout(layoutNorth);
-        BorderLayout layoutSouth = new BorderLayout();
-        mainpanel.setLayout(layoutSouth);
-        BorderLayout layoutEast = new BorderLayout();
-        mainpanel.setLayout(layoutEast);
-        BorderLayout layoutWest = new BorderLayout();
-        mainpanel.setLayout(layoutWest);
-        BorderLayout layoutCenter = new BorderLayout();
-        mainpanel.setLayout(layoutCenter);
+        JButton northButton = new JButton("Hide North Border");
+        mainpanel.add(northButton, BorderLayout.NORTH);
+        JButton southButton = new JButton("Hide South Border");
+        mainpanel.add(southButton, BorderLayout.SOUTH);
+        JButton centerButton = new JButton("Hide Center Border");
+        mainpanel.add(centerButton, BorderLayout.CENTER);
+        JButton westButton = new JButton("Hide West Border");
+        mainpanel.add(westButton, BorderLayout.WEST);
+        JButton eastButton = new JButton("Hide East Border");
+        mainpanel.add(eastButton, BorderLayout.EAST);
+
+        f.setContentPane(mainpanel);
+        f.repaint();
+        f.revalidate();
     }
 }
