@@ -1,9 +1,13 @@
 package org.iesfm.ventana;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class JListWindow {
     public static void main(String[] args) {
@@ -24,6 +28,33 @@ public class JListWindow {
         label.setPreferredSize(new Dimension(200, 80));
 
         label.setBorder(BorderFactory.createLoweredBevelBorder());
+
+        label.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                label.setForeground(Color.RED);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                    label.setForeground(Color.BLACK);
+            }
+        });
 
         panelNorth.add(label);
 
@@ -102,6 +133,14 @@ public class JListWindow {
         JPanel panelSouth = new JPanel();
 
         JLabel label1 = new JLabel("Se agregó un nuevo elemento");
+
+        jList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                String valorSeleccionado = jList.getSelectedValue();
+                label1.setText("Seleccionado " + valorSeleccionado);
+            }
+        });
 
         panelSouth.add(label1);
 
