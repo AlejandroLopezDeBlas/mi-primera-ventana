@@ -2,6 +2,10 @@ package org.iesfm.ventana;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class TareaSwing {
     public static void main(String[] args) {
@@ -14,27 +18,25 @@ public class TareaSwing {
         JPanel mainpanel = new JPanel(new BorderLayout());
         mainpanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JPanel panelNorth = new JPanel(new FlowLayout());
+        JPanel panelNorth = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 5));
 
-        FlowLayout flowLayout = (FlowLayout) panelNorth.getLayout();
 
-        flowLayout.setAlignment(FlowLayout.LEFT);
 
         panelNorth.setBackground(Color.CYAN.darker());
 
-        JButton option1 = new JButton("Option 1");
-        JButton option2 = new JButton("Option 2");
-        JButton option3 = new JButton("Option 3");
+        JButton option1Button = new JButton("Option 1");
+        JButton option2Button = new JButton("Option 2");
+        JButton option3Button = new JButton("Option 3");
 
         ButtonGroup buttonGroup = new ButtonGroup();
 
-        buttonGroup.add(option1);
-        buttonGroup.add(option2);
-        buttonGroup.add(option3);
+        buttonGroup.add(option1Button);
+        buttonGroup.add(option2Button);
+        buttonGroup.add(option3Button);
 
-        panelNorth.add(option1);
-        panelNorth.add(option2);
-        panelNorth.add(option3);
+        panelNorth.add(option1Button);
+        panelNorth.add(option2Button);
+        panelNorth.add(option3Button);
 
         JPanel panelWest = new JPanel(new GridBagLayout());
 
@@ -44,7 +46,8 @@ public class TareaSwing {
 
         panelWest.setBackground(Color.CYAN.darker());
 
-        panelWest.add(new JLabel("Option 1"), new GridBagConstraints(
+        JLabel option1Label = new JLabel("Option 1");
+        panelWest.add(option1Label, new GridBagConstraints(
                 0,
                 0,
                 1,
@@ -57,7 +60,9 @@ public class TareaSwing {
                 0,
                 0)
         );
-        panelWest.add(new JLabel("Option 2"), new GridBagConstraints(
+
+        JLabel option2Label = new JLabel("Option 2");
+        panelWest.add(option2Label, new GridBagConstraints(
                 0,
                 1,
                 1,
@@ -70,7 +75,8 @@ public class TareaSwing {
                 0,
                 0)
         );
-        panelWest.add(new JLabel("Option 3"), new GridBagConstraints(
+        JLabel option3Label = new JLabel("Option 3");
+        panelWest.add(option3Label, new GridBagConstraints(
                 0,
                 2,
                 1,
@@ -83,7 +89,8 @@ public class TareaSwing {
                 0,
                 0)
         );
-        panelWest.add(new JLabel("Option 4"), new GridBagConstraints(
+        JLabel option4Label = new JLabel("Option 4");
+        panelWest.add(option4Label, new GridBagConstraints(
                 0,
                 3,
                 1,
@@ -96,7 +103,8 @@ public class TareaSwing {
                 0,
                 0)
         );
-        panelWest.add(new JLabel("Option 5"), new GridBagConstraints(
+        JLabel option5Label = new JLabel("Option 5");
+        panelWest.add(option5Label, new GridBagConstraints(
                 0,
                 4,
                 1,
@@ -125,7 +133,8 @@ public class TareaSwing {
 
         JPanel panelCenter = new JPanel(new GridBagLayout());
 
-        panelCenter.add(new JCheckBox("Name"), new GridBagConstraints(
+        JCheckBox name = new JCheckBox("Name");
+        panelCenter.add(name, new GridBagConstraints(
                 0,
                 0,
                 1,
@@ -133,12 +142,13 @@ public class TareaSwing {
                 1.0,
                 1.0,
                 GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0),
+                GridBagConstraints.HORIZONTAL,
+                new Insets(0, 20, 0, 0),
                 0,
                 0)
         );
-        panelCenter.add(new JCheckBox("Address"), new GridBagConstraints(
+        JCheckBox address = new JCheckBox("Address");
+        panelCenter.add(address, new GridBagConstraints(
                 0,
                 1,
                 1,
@@ -146,8 +156,8 @@ public class TareaSwing {
                 1.0,
                 1.0,
                 GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0),
+                GridBagConstraints.HORIZONTAL,
+                new Insets(0, 20, 0, 0),
                 0,
                 0)
         );
@@ -159,59 +169,65 @@ public class TareaSwing {
                 1.0,
                 1.0,
                 GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0),
+                GridBagConstraints.HORIZONTAL,
+                new Insets(0, 50, 0, 0),
                 0,
                 0)
         );
-        panelCenter.add(new JCheckBox("Description"), new GridBagConstraints(
+        JCheckBox description = new JCheckBox("Description");
+        panelCenter.add(description, new GridBagConstraints(
                 0,
                 3,
                 1,
                 1,
                 1.0,
                 1.0,
-                GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0),
+                GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL,
+                new Insets(0, 20, 0, 0),
                 0,
                 0)
         );
-        panelCenter.add(new JTextField(), new GridBagConstraints(
+        JTextField nameTextField = new JTextField();
+        nameTextField.setEnabled(false);
+        panelCenter.add(nameTextField, new GridBagConstraints(
                 1,
                 0,
-                1,
+                5,
                 1,
                 5.0,
                 1.0,
                 GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
+                GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 0, 0),
                 0,
                 0)
         );
-        panelCenter.add(new JTextField(), new GridBagConstraints(
+        JTextField addressTextField = new JTextField();
+        addressTextField.setEnabled(false);
+        panelCenter.add(addressTextField, new GridBagConstraints(
                 1,
                 1,
-                1,
+                5,
                 1,
                 5.0,
                 1.0,
                 GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
+                GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 0, 0),
                 0,
                 0)
         );
-        panelCenter.add(new JTextField(), new GridBagConstraints(
+        JTextField cityTextField = new JTextField();
+        panelCenter.add(cityTextField, new GridBagConstraints(
                 1,
                 2,
-                1,
+                4,
                 1,
                 4.0,
                 1.0,
                 GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
+                GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 0, 0),
                 0,
                 0)
@@ -228,16 +244,18 @@ public class TareaSwing {
                 1.0,
                 1.0,
                 GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
+                GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 0, 0),
                 0,
                 0)
         );
-        panelCenter.add(new JTextArea(), new GridBagConstraints(
+        JTextArea descriptionTextArea = new JTextArea();
+        descriptionTextArea.setEnabled(false);
+        panelCenter.add(descriptionTextArea, new GridBagConstraints(
                 1,
                 3,
-                1,
-                1,
+                5,
+                5,
                 5.0,
                 5.0,
                 GridBagConstraints.CENTER,
@@ -246,45 +264,185 @@ public class TareaSwing {
                 0,
                 0)
         );
-        panelCenter.add(new JRadioButton("Active"), new GridBagConstraints(
+        ButtonGroup buttonGroupActiveInactive = new ButtonGroup();
+        JRadioButton active = new JRadioButton("Active");
+        JRadioButton inactive = new JRadioButton("Inactive");
+        buttonGroupActiveInactive.add(active);
+        buttonGroupActiveInactive.add(inactive);
+        panelCenter.add(active, new GridBagConstraints(
                 1,
                 8,
                 1,
                 1,
                 1.0,
                 1.0,
-                GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
+                GridBagConstraints.SOUTH,
+                GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 0, 0),
                 0,
                 0)
         );
-        panelCenter.add(new JRadioButton("Active"), new GridBagConstraints(
+        panelCenter.add(inactive, new GridBagConstraints(
                 5,
                 8,
                 1,
                 1,
                 1.0,
                 1.0,
-                GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
+                GridBagConstraints.SOUTH,
+                GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 0, 0),
                 0,
                 0)
         );
-        panelCenter.add(new JButton("Save"), new GridBagConstraints(
+        JButton save = new JButton("Save");
+        panelCenter.add(save, new GridBagConstraints(
                 5,
                 9,
                 1,
                 1,
                 1.0,
                 1.0,
-                GridBagConstraints.CENTER,
-                GridBagConstraints.BOTH,
+                GridBagConstraints.NORTH,
+                GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 0, 0),
                 0,
                 0)
         );
+
+        name.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(name.isSelected()){
+                    nameTextField.setEnabled(true);
+                }
+                else if (!name.isSelected()) {
+                    nameTextField.setEnabled(false);
+                }
+            }
+        });
+        address.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(address.isSelected()){
+                    addressTextField.setEnabled(true);
+                }
+                else if (!active.isSelected()) {
+                    addressTextField.setEnabled(false);
+                }
+            }
+        });
+        description.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(description.isSelected()){
+                    descriptionTextArea.setEnabled(true);
+                }
+                else if (!name.isSelected()) {
+                    descriptionTextArea.setEnabled(false);
+                }
+            }
+        });
+
+        option1Label.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                option1Label.setForeground(Color.RED);
+            }
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                option1Label.setForeground(Color.BLACK);
+            }
+        });
+
+        option2Label.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                option2Label.setForeground(Color.RED);
+            }
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                option2Label.setForeground(Color.BLACK);
+            }
+        });
+
+        option3Label.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                option3Label.setForeground(Color.RED);
+            }
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                option3Label.setForeground(Color.BLACK);
+            }
+        });
+
+        option4Label.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                option4Label.setForeground(Color.RED);
+            }
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                option4Label.setForeground(Color.BLACK);
+            }
+        });
+
+        option5Label.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                option5Label.setForeground(Color.RED);
+            }
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                option5Label.setForeground(Color.BLACK);
+            }
+        });
 
         mainpanel.add(panelNorth, BorderLayout.NORTH);
         mainpanel.add(panelWest, BorderLayout.WEST);
