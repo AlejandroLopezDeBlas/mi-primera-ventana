@@ -7,10 +7,37 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class TareaSwing {
+public class TareaSwing extends JFrame{
+
+    private JPanel mainPanel;
+    private JPanel panelNorth;
+    private JButton option1Button;
+    private JButton option2Button;
+    private JButton option3Button;
+    private JPanel panelWest;
+    private JLabel option1Label;
+    private JLabel option2Label;
+    private JLabel option3Label;
+    private JLabel option4Label;
+    private JLabel option5Label;
+    private JPanel panelCenter;
+    private JCheckBox name;
+    private JCheckBox address;
+    private JLabel city;
+    private JCheckBox description;
+    private JTextField nameTextField;
+    private JTextField addressTextField;
+    private JTextField cityTextField;
+    private JComboBox<String> paises;
+    private JTextArea descriptionTextArea;
+    private JRadioButton active;
+    private JRadioButton inactive;
+    private JButton save;
+
+
     public static void main(String[] args) {
         JFrame f = new JFrame();
-        f.setBounds(10, 10, 500, 400);
+        f.setBounds(10, 10, 600, 500);
         f.setVisible(true);
         f.setResizable(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -143,7 +170,7 @@ public class TareaSwing {
                 1.0,
                 GridBagConstraints.CENTER,
                 GridBagConstraints.HORIZONTAL,
-                new Insets(0, 20, 0, 0),
+                new Insets(0, 30, 0, 0),
                 0,
                 0)
         );
@@ -161,7 +188,8 @@ public class TareaSwing {
                 0,
                 0)
         );
-        panelCenter.add(new JLabel("City"), new GridBagConstraints(
+        JLabel city = new JLabel("City");
+        panelCenter.add(city, new GridBagConstraints(
                 0,
                 2,
                 1,
@@ -218,7 +246,7 @@ public class TareaSwing {
                 0,
                 0)
         );
-        JTextField cityTextField = new JTextField();
+        JTextField cityTextField = new JTextField(24);
         panelCenter.add(cityTextField, new GridBagConstraints(
                 1,
                 2,
@@ -232,11 +260,11 @@ public class TareaSwing {
                 0,
                 0)
         );
-        JComboBox<String> jComboBox = new JComboBox<>();
-        jComboBox.addItem("Spain");
-        jComboBox.addItem("Germany");
-        jComboBox.addItem("France");
-        panelCenter.add(jComboBox, new GridBagConstraints(
+        JComboBox<String> paises = new JComboBox<>();
+        paises.addItem("Spain");
+        paises.addItem("Germany");
+        paises.addItem("France");
+        panelCenter.add(paises, new GridBagConstraints(
                 5,
                 2,
                 1,
@@ -291,7 +319,7 @@ public class TareaSwing {
                 1.0,
                 GridBagConstraints.SOUTH,
                 GridBagConstraints.HORIZONTAL,
-                new Insets(0, 0, 0, 0),
+                new Insets(0, 10, 0, 0),
                 0,
                 0)
         );
